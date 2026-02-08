@@ -1,0 +1,18 @@
+              // Logo Section
+              Expanded(
+                flex: 1,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SizedBox(
+                    height: 104,
+                    child: Image.asset(
+                      'assets/images/logo_ademi.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
+              // Content Section
+              Expanded(
+                flex: 3,
+                child: Padding(

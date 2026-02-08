@@ -138,12 +138,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // TODO: Implementar navegación a VerifyCodePage
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Código enviado - Por implementar navegación'),
-                        ),
-                      );
+                      context.push(RouteConstants.verifyCode);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primary,

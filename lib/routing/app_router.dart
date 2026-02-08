@@ -12,6 +12,11 @@ import '../features/cards/presentation/pages/card_detail_page.dart';
 import '../features/home/presentation/pages/home_page.dart';
 import '../features/loans/presentation/pages/loan_detail_page.dart';
 import '../features/notifications/presentation/pages/notifications_page.dart';
+import '../features/onboarding/presentation/pages/onboarding_1_page.dart';
+import '../features/onboarding/presentation/pages/onboarding_2_page.dart';
+import '../features/onboarding/presentation/pages/onboarding_3_page.dart';
+import '../features/onboarding/presentation/pages/onboarding_4_page.dart';
+import '../features/onboarding/presentation/pages/onboarding_5_page.dart';
 
 /// Application router configuration using go_router
 /// 
@@ -20,7 +25,7 @@ class AppRouter {
   AppRouter._();
 
   static final GoRouter router = GoRouter(
-    initialLocation: RouteConstants.splash,
+    initialLocation: RouteConstants.onboarding1,
     debugLogDiagnostics: true,
     routes: [
       // ======================================================================
@@ -87,6 +92,36 @@ class AppRouter {
       // ======================================================================
       // ONBOARDING ROUTES
       // ======================================================================
+
+      GoRoute(
+        path: RouteConstants.onboarding1,
+        name: 'onboarding-1',
+        builder: (context, state) => const Onboarding1Page(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.onboarding2,
+        name: 'onboarding-2',
+        builder: (context, state) => const Onboarding2Page(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.onboarding3,
+        name: 'onboarding-3',
+        builder: (context, state) => const Onboarding3Page(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.onboarding4,
+        name: 'onboarding-4',
+        builder: (context, state) => const Onboarding4Page(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.onboarding5,
+        name: 'onboarding-5',
+        builder: (context, state) => const Onboarding5Page(),
+      ),
 
       GoRoute(
         path: RouteConstants.onboarding,
