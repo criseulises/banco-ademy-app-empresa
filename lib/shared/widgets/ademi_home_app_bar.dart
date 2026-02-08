@@ -102,10 +102,8 @@ class AdemiHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             // Botón de salir
             InkWell(
               onTap: () {
-                // TODO: Implementar logout
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Cerrar sesión')),
-                );
+                // Cerrar sesión y volver al login
+                context.go(RouteConstants.login);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
