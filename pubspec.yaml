@@ -121,9 +121,6 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/mock_data/
-    - resources/
-    - resources/images/
-    - resources/icons/
 
   # Fonts - Banco ADEMI (commented until font files are downloaded)
   # Download from: https://fonts.google.com/specimen/Montserrat

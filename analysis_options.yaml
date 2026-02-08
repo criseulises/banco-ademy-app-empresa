@@ -31,7 +31,6 @@ linter:
     always_declare_return_types: true
     always_put_control_body_on_new_line: true
     always_put_required_named_parameters_first: true
-    always_require_non_null_named_parameters: true
     annotate_overrides: true
     avoid_bool_literals_in_conditional_expressions: true
     avoid_catching_errors: true
@@ -45,7 +44,6 @@ linter:
     avoid_redundant_argument_values: true
     avoid_renaming_method_parameters: true
     avoid_return_types_on_setters: true
-    avoid_returning_null_for_future: true
     avoid_setters_without_getters: true
     avoid_single_cascade_in_expression_statements: true
     avoid_types_as_parameter_names: true
@@ -80,7 +78,6 @@ linter:
     one_member_abstracts: true
     only_throw_errors: true
     overridden_fields: true
-    package_api_docs: false
     package_prefixed_library_names: true
     parameter_assignments: true
     prefer_adjacent_string_concatenation: true
