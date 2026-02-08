@@ -428,9 +428,13 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           _selectedBottomIndex = index;
         });
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(label)),
-        );
+        if (index == 1) {
+          context.push('/transactions');
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(label)),
+          );
+        }
       },
       borderRadius: BorderRadius.circular(12),
       child: Padding(
