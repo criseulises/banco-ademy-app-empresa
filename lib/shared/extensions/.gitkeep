@@ -1,0 +1,9 @@
+# Placeholder for extension methods
+
+This directory will contain Dart extension methods:
+- string_extension.dart: String utilities
+- date_extension.dart: DateTime utilities
+- context_extension.dart: BuildContext utilities
+- number_extension.dart: Number formatting utilities
+- list_extension.dart: List utilities
+- color_extension.dart: Color utilities

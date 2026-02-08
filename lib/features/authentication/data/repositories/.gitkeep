@@ -1,0 +1,7 @@
+# Placeholder file for authentication repository implementation
+
+This directory will contain:
+- auth_repository_impl.dart: Implementation of the authentication repository interface
+
+The repository will coordinate between remote and local data sources,
+handle caching strategies, and convert models to entities.

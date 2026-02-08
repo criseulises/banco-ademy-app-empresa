@@ -1,0 +1,15 @@
+# Placeholder file for authentication datasources
+
+This directory will contain:
+- auth_remote_datasource.dart: API calls for authentication
+- auth_local_datasource.dart: Local cache for authentication data
+
+These files will handle:
+- Login API requests
+- Logout API requests
+- Registration API requests
+- OTP validation
+- Password reset requests
+- Device registration
+- Token refresh
+- Caching user data locally

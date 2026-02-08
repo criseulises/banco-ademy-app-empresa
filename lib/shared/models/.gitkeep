@@ -1,0 +1,7 @@
+# Placeholder for shared models
+
+This directory will contain shared data models used across features:
+- response_model.dart: Generic API response wrapper
+- pagination_model.dart: Pagination data model
+- error_response_model.dart: Error response model
+- meta_data_model.dart: Metadata model

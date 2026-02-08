@@ -1,0 +1,11 @@
+# Placeholder file for authentication BLoCs
+
+This directory will contain BLoC files for state management:
+- auth_bloc.dart: Main authentication BLoC
+- auth_event.dart: Authentication events
+- auth_state.dart: Authentication states
+- login_bloc.dart: Login-specific BLoC
+- registration_bloc.dart: Registration BLoC
+- password_recovery_bloc.dart: Password recovery BLoC
+
+BLoCs handle business logic in the presentation layer.

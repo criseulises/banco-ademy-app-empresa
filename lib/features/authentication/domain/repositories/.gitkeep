@@ -1,0 +1,7 @@
+# Placeholder file for authentication repository interface
+
+This directory will contain:
+- auth_repository.dart: Repository interface (abstract class)
+
+The interface defines the contract for authentication operations
+without knowing how they are implemented.

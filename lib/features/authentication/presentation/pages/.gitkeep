@@ -1,0 +1,12 @@
+# Placeholder file for authentication pages
+
+This directory will contain full-screen pages:
+- splash_page.dart
+- login_page.dart
+- biometric_login_page.dart
+- register_page.dart
+- forgot_password_page.dart
+- reset_password_page.dart
+- otp_verification_page.dart
+
+Each page is a StatefulWidget or StatelessWidget representing a screen.

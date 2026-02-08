@@ -1,0 +1,9 @@
+# Placeholder for custom fonts
+
+If using custom fonts, place font files here:
+- CustomFont-Regular.ttf
+- CustomFont-Bold.ttf
+- CustomFont-Medium.ttf
+- etc.
+
+Then reference them in pubspec.yaml

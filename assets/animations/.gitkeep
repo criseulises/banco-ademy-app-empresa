@@ -1,0 +1,9 @@
+# Placeholder for animations
+
+Place Lottie animation files (.json) in this directory:
+- loading_animation.json
+- success_animation.json
+- error_animation.json
+- empty_state_animation.json
+
+Use the lottie package to display these animations.

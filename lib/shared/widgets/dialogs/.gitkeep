@@ -1,0 +1,10 @@
+# Placeholder for dialog components
+
+This directory will contain dialog and modal widgets:
+- confirmation_dialog.dart: Confirmation dialogs
+- error_dialog.dart: Error message dialogs
+- success_dialog.dart: Success message dialogs
+- info_dialog.dart: Information dialogs
+- loading_dialog.dart: Loading dialogs
+- bottom_sheet_custom.dart: Bottom sheet modals
+- alert_dialog_custom.dart: Alert dialogs

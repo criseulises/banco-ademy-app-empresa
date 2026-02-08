@@ -1,0 +1,11 @@
+# Digital Onboarding Feature - Placeholder
+
+This feature handles the digital account opening process.
+
+Structure: data/domain/presentation layers with:
+- Personal information collection
+- Document upload and validation
+- FacePhi biometric validation
+- KYC verification
+- Electronic signature
+- Onboarding completion

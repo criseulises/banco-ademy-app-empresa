@@ -1,0 +1,10 @@
+# Placeholder for card components
+
+This directory will contain card widgets:
+- account_card.dart: Display account information
+- transaction_card.dart: Display transaction information
+- credit_card_widget.dart: Credit/debit card visual representation
+- product_card.dart: Display banking products
+- info_card.dart: Information display card
+- action_card.dart: Actionable cards with buttons
+- summary_card.dart: Summary information cards

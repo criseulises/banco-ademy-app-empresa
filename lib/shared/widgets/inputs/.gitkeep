@@ -1,0 +1,12 @@
+# Placeholder for input components
+
+This directory will contain reusable input field widgets:
+- text_field_custom.dart: Standard text input
+- password_field.dart: Password input with visibility toggle
+- email_field.dart: Email input with validation
+- phone_field.dart: Phone number input
+- search_field.dart: Search input
+- dropdown_field.dart: Dropdown selector
+- date_picker_field.dart: Date picker input
+- amount_input_field.dart: Amount input with formatting
+- otp_input.dart: OTP code input

@@ -1,0 +1,9 @@
+# Placeholder for button components
+
+This directory will contain reusable button widgets:
+- primary_button.dart: Main action buttons
+- secondary_button.dart: Secondary action buttons
+- outline_button_custom.dart: Outlined buttons
+- text_button_custom.dart: Text-only buttons
+- icon_button_custom.dart: Icon buttons
+- floating_action_button_custom.dart: FAB variations

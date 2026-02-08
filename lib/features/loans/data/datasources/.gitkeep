@@ -1,0 +1,11 @@
+# Loans Feature - Placeholder
+
+This feature handles loan products, applications, and payments.
+
+Structure: data/domain/presentation layers with:
+- View loan list
+- Loan details
+- Payment history
+- Payment schedule
+- Apply for new loans
+- Track application status

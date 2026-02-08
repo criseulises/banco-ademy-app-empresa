@@ -1,0 +1,9 @@
+# Placeholder for icons
+
+Place SVG and PNG icons in this directory:
+- app_icon.png
+- tab bar icons
+- feature icons
+- action icons
+
+Consider using flutter_svg for SVG icons.

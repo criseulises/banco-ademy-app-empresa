@@ -1,0 +1,124 @@
+{
+  "notifications": [
+    {
+      "id": "notif_001",
+      "userId": "user_001",
+      "type": "TRANSACCION",
+      "title": "Transferencia enviada",
+      "message": "Has enviado RD$5,000.00 a María Rodríguez Santos",
+      "date": "2026-02-07T08:30:00Z",
+      "isRead": false,
+      "priority": "NORMAL",
+      "icon": "transfer",
+      "actionUrl": "/transactions/txn_001"
+    },
+    {
+      "id": "notif_002",
+      "userId": "user_001",
+      "type": "DEPOSITO",
+      "title": "Depósito recibido",
+      "message": "Se ha acreditado RD$25,000.00 en tu cuenta de Ahorro",
+      "date": "2026-02-06T14:20:00Z",
+      "isRead": false,
+      "priority": "NORMAL",
+      "icon": "deposit",
+      "actionUrl": "/transactions/txn_002"
+    },
+    {
+      "id": "notif_003",
+      "userId": "user_001",
+      "type": "PAGO",
+      "title": "Pago de servicio exitoso",
+      "message": "Tu pago de electricidad EDESUR por RD$1,250.00 fue procesado",
+      "date": "2026-02-06T11:15:00Z",
+      "isRead": true,
+      "priority": "NORMAL",
+      "icon": "payment",
+      "actionUrl": "/transactions/txn_003"
+    },
+    {
+      "id": "notif_004",
+      "userId": "user_001",
+      "type": "ALERTA",
+      "title": "Próximo vencimiento de préstamo",
+      "message": "Tu cuota de préstamo vence el 1 de marzo. RD$8,500.00",
+      "date": "2026-02-06T08:00:00Z",
+      "isRead": true,
+      "priority": "HIGH",
+      "icon": "alert",
+      "actionUrl": "/loans/loan_001"
+    },
+    {
+      "id": "notif_005",
+      "userId": "user_001",
+      "type": "RETIRO",
+      "title": "Retiro en ATM",
+      "message": "Has retirado RD$3,000.00 en ATM Av. Winston Churchill",
+      "date": "2026-02-05T18:45:00Z",
+      "isRead": true,
+      "priority": "NORMAL",
+      "icon": "atm",
+      "actionUrl": "/transactions/txn_004"
+    },
+    {
+      "id": "notif_006",
+      "userId": "user_001",
+      "type": "TARJETA",
+      "title": "Vencimiento de tarjeta próximo",
+      "message": "Tu tarjeta Mastercard Oro vence en 3 meses",
+      "date": "2026-02-05T08:00:00Z",
+      "isRead": true,
+      "priority": "NORMAL",
+      "icon": "card",
+      "actionUrl": "/cards/card_002"
+    },
+    {
+      "id": "notif_007",
+      "userId": "user_001",
+      "type": "SEGURIDAD",
+      "title": "Nuevo inicio de sesión",
+      "message": "Se detectó un inicio de sesión desde un nuevo dispositivo",
+      "date": "2026-02-04T10:30:00Z",
+      "isRead": true,
+      "priority": "HIGH",
+      "icon": "security",
+      "actionUrl": "/profile/security"
+    },
+    {
+      "id": "notif_008",
+      "userId": "user_001",
+      "type": "PROMOCION",
+      "title": "¡Nueva oferta de préstamo!",
+      "message": "Pre-aprobado para préstamo personal hasta RD$200,000 con tasa especial",
+      "date": "2026-02-03T09:00:00Z",
+      "isRead": true,
+      "priority": "LOW",
+      "icon": "promotion",
+      "actionUrl": "/loans/apply"
+    },
+    {
+      "id": "notif_009",
+      "userId": "user_002",
+      "type": "TRANSACCION",
+      "title": "Transferencia recibida",
+      "message": "Has recibido RD$5,000.00 de Juan Pérez García",
+      "date": "2026-02-07T08:30:00Z",
+      "isRead": false,
+      "priority": "NORMAL",
+      "icon": "transfer",
+      "actionUrl": "/transactions/txn_009"
+    },
+    {
+      "id": "notif_010",
+      "userId": "user_002",
+      "type": "COMPRA",
+      "title": "Compra realizada",
+      "message": "Compra en Supermercado Nacional por RD$3,250.75",
+      "date": "2026-02-06T16:45:00Z",
+      "isRead": false,
+      "priority": "NORMAL",
+      "icon": "shopping",
+      "actionUrl": "/transactions/txn_010"
+    }
+  ]
+}

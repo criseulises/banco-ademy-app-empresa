@@ -1,0 +1,12 @@
+# Placeholder file for authentication widgets
+
+This directory will contain reusable widgets specific to authentication:
+- login_form.dart
+- registration_form.dart
+- biometric_button.dart
+- otp_input_field.dart
+- password_strength_indicator.dart
+- password_input_field.dart
+- terms_and_conditions_checkbox.dart
+
+These are smaller, reusable UI components used within authentication pages.

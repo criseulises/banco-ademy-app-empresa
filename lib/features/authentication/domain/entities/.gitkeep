@@ -1,0 +1,8 @@
+# Placeholder file for authentication entities
+
+This directory will contain domain entities:
+- user.dart: User entity (business object)
+- device.dart: Device entity
+
+Entities are plain Dart objects with no dependencies on frameworks.
+They represent core business concepts.

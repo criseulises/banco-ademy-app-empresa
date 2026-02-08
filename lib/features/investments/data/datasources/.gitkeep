@@ -1,0 +1,11 @@
+# Investments Feature - Placeholder
+
+This feature handles investment products and portfolio management.
+
+Structure: data/domain/presentation layers with:
+- View investments
+- Investment details
+- Available products
+- Create new investments
+- Transaction history
+- Performance tracking

@@ -1,0 +1,9 @@
+# Placeholder for loader components
+
+This directory will contain loading indicator widgets:
+- circular_loader.dart: Circular progress indicator
+- linear_loader.dart: Linear progress indicator
+- shimmer_loader.dart: Shimmer loading effect
+- skeleton_loader.dart: Skeleton screen loaders
+- custom_loader.dart: Custom animated loaders
+- page_loader.dart: Full-page loading overlay

@@ -1,0 +1,15 @@
+# Placeholder file for authentication use cases
+
+This directory will contain use cases (business logic):
+- login_usecase.dart
+- biometric_login_usecase.dart
+- logout_usecase.dart
+- register_usecase.dart
+- forgot_password_usecase.dart
+- reset_password_usecase.dart
+- validate_otp_usecase.dart
+- resend_otp_usecase.dart
+- check_auth_status_usecase.dart
+- register_device_usecase.dart
+
+Each use case represents a single business operation.

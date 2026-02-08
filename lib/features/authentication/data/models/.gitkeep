@@ -1,0 +1,11 @@
+# Placeholder file for authentication models
+
+This directory will contain data models:
+- user_model.dart
+- login_request_model.dart
+- login_response_model.dart
+- registration_request_model.dart
+- device_model.dart
+- otp_request_model.dart
+
+All models will have JSON serialization using json_serializable.
