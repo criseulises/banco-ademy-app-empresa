@@ -6,6 +6,7 @@ import '../features/auth/presentation/pages/login_page.dart';
 import '../features/auth/presentation/pages/reset_password_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
 import '../features/auth/presentation/pages/verify_code_page.dart';
+import '../features/home/presentation/pages/home_page.dart';
 
 /// Application router configuration using go_router
 /// 
@@ -98,10 +99,7 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.home,
         name: 'home',
-        builder: (context, state) {
-          // TODO: Return HomePage()
-          throw UnimplementedError('Home page not implemented');
-        },
+        builder: (context, state) => const HomePage(),
       ),
 
       // ======================================================================

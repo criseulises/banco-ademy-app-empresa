@@ -193,11 +193,8 @@ class _LoginPageState extends State<LoginPage> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Iniciar sesión - Por implementar'),
-                          ),
-                        );
+                        // TODO: Implementar validación de credenciales
+                        context.go(RouteConstants.home);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
