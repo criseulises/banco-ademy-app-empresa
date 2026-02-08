@@ -13,6 +13,7 @@ class RouteConstants {
   static const String biometricLogin = '/biometric-login';
   static const String register = '/register';
   static const String forgotPassword = '/forgot-password';
+  static const String verifyCode = '/verify-code';
   static const String resetPassword = '/reset-password';
   static const String otpVerification = '/otp-verification';
 

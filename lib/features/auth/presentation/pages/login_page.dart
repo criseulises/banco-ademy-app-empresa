@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/route_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 
 /// Login page for Banco ADEMI
@@ -47,12 +49,12 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.bottomCenter,
                 child: Image.asset(
                   'resources/logo_ademi.png',
-                  width: 200,
+                  width: 250,
                   fit: BoxFit.contain,
                 ),
               ),
               
-              const SizedBox(height: 32),
+              const SizedBox(height: 22),
               
               // Bienvenido de vuelta
               const Text(
@@ -164,11 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.centerLeft,
                 child: TextButton(
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Recuperar contraseña - Por implementar'),
-                      ),
-                    );
+                    context.push(RouteConstants.forgotPassword);
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,

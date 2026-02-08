@@ -1,8 +1,11 @@
 import 'package:go_router/go_router.dart';
 
 import '../core/constants/route_constants.dart';
+import '../features/auth/presentation/pages/forgot_password_page.dart';
 import '../features/auth/presentation/pages/login_page.dart';
+import '../features/auth/presentation/pages/reset_password_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
+import '../features/auth/presentation/pages/verify_code_page.dart';
 
 /// Application router configuration using go_router
 /// 
@@ -51,10 +54,19 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.forgotPassword,
         name: 'forgot-password',
-        builder: (context, state) {
-          // TODO: Return ForgotPasswordPage()
-          throw UnimplementedError('Forgot password page not implemented');
-        },
+        builder: (context, state) => const ForgotPasswordPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.verifyCode,
+        name: 'verify-code',
+        builder: (context, state) => const VerifyCodePage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.resetPassword,
+        name: 'reset-password',
+        builder: (context, state) => const ResetPasswordPage(),
       ),
 
       GoRoute(
