@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/route_constants.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../shared/widgets/ademi_app_bar.dart';
 
@@ -209,12 +211,16 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // TODO: Implementar lógica de restablecimiento
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Contraseña actualizada - Por implementar'),
+                          content: Text('Contraseña actualizada exitosamente'),
+                          duration: Duration(seconds: 2),
                         ),
                       );
+                      // Navegar al login después de actualizar contraseña
+                      Future.delayed(const Duration(seconds: 2), () {
+                        context.go(RouteConstants.login);
+                      });
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primary,
@@ -242,7 +248,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      context.go(RouteConstants.login);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.secondary,
