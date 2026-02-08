@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/widgets/common_bottom_nav.dart';
 import '../../../../shared/widgets/ademi_home_app_bar.dart';
 
 /// Home page - Dashboard principal de Banco ADEMI
@@ -14,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedBottomIndex = 0;
   String? _selectedFilter; // null = todos, 'cuentas', 'tarjetas', 'prestamos', 'inversiones'
 
   @override
@@ -177,7 +177,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: const CommonBottomNav(selectedIndex: 0),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -371,100 +371,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildBottomNavItem(
-                icon: 'resources/tabler-icon-wallet.svg',
-                label: 'Mis productos',
-                index: 0,
-              ),
-              _buildBottomNavItem(
-                icon: 'resources/tabler-icon-arrows-exchange-2.svg',
-                label: 'Transacciones',
-                index: 1,
-              ),
-              _buildBottomNavItem(
-                icon: 'resources/tabler-icon-category-plus.svg',
-                label: 'Solicitudes',
-                index: 2,
-              ),
-              _buildBottomNavItem(
-                icon: 'resources/tabler-icon-stack-2.svg',
-                label: 'Otras opciones',
-                index: 3,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBottomNavItem({
-    required String icon,
-    required String label,
-    required int index,
-  }) {
-    final isSelected = _selectedBottomIndex == index;
-    
-    return InkWell(
-      onTap: () {
-        setState(() {
-          _selectedBottomIndex = index;
-        });
-        if (index == 1) {
-          context.push('/transactions');
-        } else if (index == 3) {
-          context.push('/other-options');
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(label)),
-          );
-        }
-      },
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              icon,
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(
-                isSelected ? AppColors.primary : Colors.grey.shade500,
-                BlendMode.srcIn,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                color: isSelected ? AppColors.primary : Colors.grey.shade600,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

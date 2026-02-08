@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../../core/widgets/common_bottom_nav.dart';
 
 /// Payments page - Pagos
 class PaymentsPage extends StatelessWidget {
@@ -24,7 +25,7 @@ class PaymentsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             _buildOptionCard(
-              icon: 'resources/tabler-icon-cash.svg',
+              icon: 'resources/loans.svg',
               label: 'Pagar préstamo',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -50,7 +51,7 @@ class PaymentsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             _buildOptionCard(
-              icon: 'resources/tabler-icon-device-mobile.svg',
+              icon: 'resources/tabler-icon-phone.svg',
               label: 'Recargar celular',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -61,7 +62,7 @@ class PaymentsPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(context),
+      bottomNavigationBar: const CommonBottomNav(selectedIndex: 1),
     );
   }
 
@@ -143,90 +144,4 @@ class PaymentsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNav(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(
-                icon: 'resources/tabler-icon-wallet.svg',
-                label: 'Mis productos',
-                isSelected: false,
-                onTap: () => Navigator.pop(context),
-              ),
-              _buildNavItem(
-                icon: 'resources/tabler-icon-arrows-exchange-2.svg',
-                label: 'Transacciones',
-                isSelected: false,
-                onTap: () => context.push('/transactions'),
-              ),
-              _buildNavItem(
-                icon: 'resources/tabler-icon-category-plus.svg',
-                label: 'Solicitudes',
-                isSelected: false,
-                onTap: () {},
-              ),
-              _buildNavItem(
-                icon: 'resources/tabler-icon-stack-2.svg',
-                label: 'Otras opciones',
-                isSelected: false,
-                onTap: () {},
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildNavItem({
-    required String icon,
-    required String label,
-    required bool isSelected,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              icon,
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(
-                isSelected ? AppColors.primary : Colors.grey.shade500,
-                BlendMode.srcIn,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                color: isSelected ? AppColors.primary : Colors.grey.shade600,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

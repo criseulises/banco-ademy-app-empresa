@@ -33,6 +33,7 @@ import '../features/onboarding/presentation/pages/onboarding_2_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_3_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_4_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_5_page.dart';
+import '../features/requests/presentation/pages/requests_page.dart';
 
 /// Application router configuration using go_router
 /// 
@@ -155,19 +156,31 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.home,
         name: 'home',
-        builder: (context, state) => const HomePage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const HomePage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
         path: RouteConstants.transactions,
         name: 'transactions',
-        builder: (context, state) => const TransactionsPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const TransactionsPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
         path: RouteConstants.transactionHistory,
         name: 'transaction-history',
-        builder: (context, state) => const TransactionHistoryPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const TransactionHistoryPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       // ======================================================================
@@ -233,19 +246,31 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.transfers,
         name: 'transfers',
-        builder: (context, state) => const TransfersPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const TransfersPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
         path: RouteConstants.ownTransfer,
         name: 'own-transfer',
-        builder: (context, state) => const OwnTransferPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const OwnTransferPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
         path: RouteConstants.thirdPartyTransfer,
         name: 'third-party-transfer',
-        builder: (context, state) => const ThirdPartyTransferPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const ThirdPartyTransferPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
@@ -269,19 +294,31 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.payments,
         name: 'payments',
-        builder: (context, state) => const PaymentsPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const PaymentsPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
         path: RouteConstants.cardPayment,
         name: 'card-payment',
-        builder: (context, state) => const CardPaymentPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const CardPaymentPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
         path: RouteConstants.servicePayment,
         name: 'service-payment',
-        builder: (context, state) => const ServicePaymentPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const ServicePaymentPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       // ======================================================================
@@ -291,13 +328,21 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.scheduled,
         name: 'scheduled',
-        builder: (context, state) => const ScheduledPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const ScheduledPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(
         path: RouteConstants.scheduledThirdPartyTransfer,
         name: 'scheduled-third-party-transfer',
-        builder: (context, state) => const ScheduledThirdPartyTransferPage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const ScheduledThirdPartyTransferPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       // ======================================================================
@@ -368,6 +413,20 @@ class AppRouter {
       ),
 
       // ======================================================================
+      // REQUESTS ROUTES
+      // ======================================================================
+
+      GoRoute(
+        path: RouteConstants.requests,
+        name: 'requests',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const RequestsPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
+      ),
+
+      // ======================================================================
       // SUPPORT ROUTES
       // ======================================================================
 
@@ -397,7 +456,11 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.otherOptions,
         name: 'other-options',
-        builder: (context, state) => const MorePage(),
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const MorePage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
       ),
 
       GoRoute(

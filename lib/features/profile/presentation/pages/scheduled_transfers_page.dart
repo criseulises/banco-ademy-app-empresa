@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/widgets/common_bottom_nav.dart';
 
 class ScheduledTransfersPage extends StatefulWidget {
   const ScheduledTransfersPage({super.key});
@@ -26,26 +27,32 @@ class _ScheduledTransfersPageState extends State<ScheduledTransfersPage> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: AppColors.primary,
         elevation: 0,
-        toolbarHeight: 64,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset(
-              'assets/images/logo_ademi_blanco.png',
-              height: 28,
+        toolbarHeight: 80,
+        automaticallyImplyLeading: false,
+        flexibleSpace: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: Row(
+              children: [
+                Image.asset(
+                  'resources/logo_ademi_blanco.png',
+                  height: 45,
+                  fit: BoxFit.contain,
+                ),
+                const Spacer(),
+                const Text(
+                  'Transacciones agendadas',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
-            Text(
-              'Transacciones agendadas',
-              style: AppTextStyles.headlineSmall.copyWith(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
       body: Column(
@@ -161,7 +168,7 @@ class _ScheduledTransfersPageState extends State<ScheduledTransfersPage> {
           ),
         ],
       ),
-      bottomNavigationBar: _buildBottomNavBar(context),
+      bottomNavigationBar: const CommonBottomNav(selectedIndex: 3),
     );
   }
 
@@ -322,102 +329,6 @@ class _ScheduledTransfersPageState extends State<ScheduledTransfersPage> {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildBottomNavBar(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildBottomNavItem(
-                context,
-                'Mis productos',
-                Icons.account_balance_wallet_outlined,
-                0,
-                () {
-                  // TODO: Navigate to products
-                },
-              ),
-              _buildBottomNavItem(
-                context,
-                'Transacciones',
-                Icons.swap_horiz,
-                1,
-                () {
-                  // TODO: Navigate to transactions
-                },
-              ),
-              _buildBottomNavItem(
-                context,
-                'Solicitudes',
-                Icons.apps,
-                2,
-                () {
-                  // TODO: Navigate to requests
-                },
-              ),
-              _buildBottomNavItem(
-                context,
-                'Otras opciones',
-                Icons.layers_outlined,
-                3,
-                () {
-                  context.go('/other-options');
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBottomNavItem(
-    BuildContext context,
-    String label,
-    IconData icon,
-    int index,
-    VoidCallback onTap,
-  ) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              color: AppColors.textSecondary,
-              size: 24,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                color: AppColors.textSecondary,
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
       ),
     );
   }
