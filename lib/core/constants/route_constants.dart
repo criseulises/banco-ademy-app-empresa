@@ -21,6 +21,11 @@ class RouteConstants {
   // ONBOARDING ROUTES
   // ============================================================================
 
+  static const String onboarding1 = '/onboarding-1';
+  static const String onboarding2 = '/onboarding-2';
+  static const String onboarding3 = '/onboarding-3';
+  static const String onboarding4 = '/onboarding-4';
+  static const String onboarding5 = '/onboarding-5';
   static const String onboarding = '/onboarding';
   static const String onboardingPersonalInfo = '/onboarding/personal-info';
   static const String onboardingDocuments = '/onboarding/documents';

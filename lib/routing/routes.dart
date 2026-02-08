@@ -22,6 +22,11 @@ class Routes {
   // ONBOARDING
   // ============================================================================
 
+  static String onboarding1() => RouteConstants.onboarding1;
+  static String onboarding2() => RouteConstants.onboarding2;
+  static String onboarding3() => RouteConstants.onboarding3;
+  static String onboarding4() => RouteConstants.onboarding4;
+  static String onboarding5() => RouteConstants.onboarding5;
   static String onboarding() => RouteConstants.onboarding;
   static String onboardingPersonalInfo() => RouteConstants.onboardingPersonalInfo;
   static String onboardingDocuments() => RouteConstants.onboardingDocuments;
