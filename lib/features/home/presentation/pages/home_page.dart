@@ -270,6 +270,32 @@ class _HomePageState extends State<HomePage> {
               'balance': balance,
             },
           );
+        } else if (type == 'tarjetas') {
+          context.push(
+            '/cards/$accountNumber',
+            extra: {
+              'cardName': title,
+              'cardNumber': '4716********0221',
+              'cardHolder': 'CRISTIAN S\u00c1NCHEZ',
+              'available': 'RD\$ 19,200.13',
+              'balance': balance,
+              'brand': 'VISA',
+            },
+          );
+        } else if (type == 'prestamos') {
+          context.push(
+            '/loans/$accountNumber',
+            extra: {
+              'title': title,
+              'subtitle': subtitle,
+              'loanNumber': '022-104716',
+              'remainingAmount': 'RD\$ 19,200.13',
+              'originalAmount': 'RD\$ 32,000.00',
+              'rate': '10.00%',
+              'totalInstallments': 10,
+              'paidInstallments': 4,
+            },
+          );
         }
       },
       borderRadius: BorderRadius.circular(16),

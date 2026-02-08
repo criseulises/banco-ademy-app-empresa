@@ -1,62 +1,66 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theme/app_colors.dart';
 
-/// Account detail page - Detalle de cuenta
-class AccountDetailPage extends StatefulWidget {
+/// Loan detail page - Detalles de préstamo
+class LoanDetailPage extends StatefulWidget {
   final String title;
   final String subtitle;
-  final String accountNumber;
-  final String balance;
+  final String loanNumber;
+  final String remainingAmount;
+  final String originalAmount;
+  final String rate;
+  final int totalInstallments;
+  final int paidInstallments;
 
-  const AccountDetailPage({
+  const LoanDetailPage({
     super.key,
     required this.title,
     required this.subtitle,
-    required this.accountNumber,
-    required this.balance,
+    required this.loanNumber,
+    required this.remainingAmount,
+    required this.originalAmount,
+    required this.rate,
+    required this.totalInstallments,
+    required this.paidInstallments,
   });
 
   @override
-  State<AccountDetailPage> createState() => _AccountDetailPageState();
+  State<LoanDetailPage> createState() => _LoanDetailPageState();
 }
 
-class _AccountDetailPageState extends State<AccountDetailPage> {
+class _LoanDetailPageState extends State<LoanDetailPage> {
   int _selectedBottomIndex = 0;
-  String? _selectedMovementFilter; // null = todo
+  String? _selectedCuotaFilter; // null = todo
 
-  // Mock data de movimientos
-  final List<Map<String, dynamic>> _movements = [
+  // Mock data de cuotas
+  final List<Map<String, dynamic>> _cuotas = [
     {
-      'title': 'Depósito mensual',
-      'date': '26 de junio, 2025',
-      'amount': 'RD\$ 10,000.00',
-      'type': 'credito',
+      'title': 'Pr\u00f3xima cuota',
+      'date': '26 de julio, 2025',
+      'amount': 'RD\$ 3,204.63',
+      'status': 'pendiente',
     },
     {
-      'title': 'Pago préstamo lavadora',
+      'title': 'Pago cuota No. 4',
       'date': '26 de junio, 2025',
-      'amount': '-RD\$ 3,204.63',
-      'type': 'debito',
+      'amount': 'RD\$ 3,204.63',
+      'status': 'pagada',
     },
     {
-      'title': 'Depósito mensual',
+      'title': 'Pago cuota No. 3',
       'date': '26 de mayo, 2025',
-      'amount': 'RD\$ 10,000.00',
-      'type': 'credito',
+      'amount': 'RD\$ 3,204.63',
+      'status': 'pagada',
     },
     {
-      'title': 'Depósito mensual',
+      'title': 'Pago cuota No. 2',
       'date': '26 de abril, 2025',
-      'amount': 'RD\$ 10,000.00',
-      'type': 'credito',
-    },
-    {
-      'title': 'Depósito mensual',
-      'date': '26 de marzo, 2025',
-      'amount': 'RD\$ 10,000.00',
-      'type': 'credito',
+      'amount': 'RD\$ 3,204.63',
+      'status': 'pagada',
     },
   ];
 
@@ -71,18 +75,18 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
           children: [
             const SizedBox(height: 24),
 
-            // Información de la cuenta
-            _buildAccountInfoCard(),
+            // Informaci\u00f3n del pr\u00e9stamo
+            _buildLoanInfoCard(),
 
             const SizedBox(height: 24),
 
-            // Acciones rápidas
+            // Acciones r\u00e1pidas
             _buildActionButtons(),
 
             const SizedBox(height: 32),
 
-            // Movimientos
-            _buildMovementsSection(),
+            // Cuotas
+            _buildCuotasSection(),
 
             const SizedBox(height: 100),
           ],
@@ -103,16 +107,14 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Row(
             children: [
-              // Logo
               Image.asset(
                 'resources/logo_ademi_blanco.png',
                 height: 45,
                 fit: BoxFit.contain,
               ),
               const Spacer(),
-              // Título
               const Text(
-                'Detalle de cuenta',
+                'Detalles de pr\u00e9stamo',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -126,7 +128,9 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
     );
   }
 
-  Widget _buildAccountInfoCard() {
+  Widget _buildLoanInfoCard() {
+    final pending = widget.totalInstallments - widget.paidInstallments;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Container(
@@ -138,20 +142,30 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Título con icono
+            // T\u00edtulo con icono
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  widget.title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      widget.title,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    const Icon(
+                      Icons.edit_outlined,
+                      size: 18,
+                      color: AppColors.primary,
+                    ),
+                  ],
                 ),
                 SvgPicture.asset(
-                  'resources/pig.svg',
+                  'resources/loans.svg',
                   width: 28,
                   height: 28,
                   colorFilter: const ColorFilter.mode(
@@ -161,43 +175,202 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 2),
 
-            // Subtítulo
+            // Subt\u00edtulo
             Text(
               widget.subtitle,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 13,
                 color: Colors.grey.shade600,
               ),
             ),
 
             const SizedBox(height: 20),
 
-            // Número de cuenta y balance
+            // Gr\u00e1fico circular + leyenda + datos
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Gr\u00e1fico circular
+                SizedBox(
+                  width: 110,
+                  height: 110,
+                  child: CustomPaint(
+                    painter: _LoanProgressPainter(
+                      paid: widget.paidInstallments,
+                      pending: pending,
+                      total: widget.totalInstallments,
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '${widget.paidInstallments}/${widget.totalInstallments}',
+                            style: const TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textPrimary,
+                            ),
+                          ),
+                          Text(
+                            'Cuotas pagadas',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 7,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(width: 16),
+
+                // Leyenda + Tasa y capital
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Leyenda
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildLegendItem(
+                            color: AppColors.primary,
+                            label: '${widget.paidInstallments} Pagadas',
+                          ),
+                          const SizedBox(height: 6),
+                          _buildLegendItem(
+                            color: AppColors.secondary,
+                            label: '$pending Pendientes',
+                          ),
+                          const SizedBox(height: 6),
+                          _buildLegendItem(
+                            color: AppColors.error,
+                            label: '0 Vencidas',
+                          ),
+                        ],
+                      ),
+
+                      const Spacer(),
+
+                      // Tasa y capital
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'Tasa',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.grey.shade500,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            widget.rate,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textPrimary,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Capital original',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.grey.shade500,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            widget.originalAmount,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textPrimary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 20),
+
+            // N\u00famero de pr\u00e9stamo y monto restante
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  widget.accountNumber,
+                  widget.loanNumber,
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.grey.shade500,
                   ),
                 ),
-                Text(
-                  widget.balance,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.textPrimary,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Monto restante',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Colors.grey.shade500,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      widget.remainingAmount,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildLegendItem({
+    required Color color,
+    required String label,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 8,
+          height: 8,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+          ),
+        ),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade700,
+          ),
+        ),
+      ],
     );
   }
 
@@ -208,16 +381,8 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
         children: [
           Expanded(
             child: _buildActionButton(
-              icon: 'resources/tabler-icon-file-transfer.svg',
-              label: 'Transferir',
-              onTap: () {},
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: _buildActionButton(
               icon: 'resources/tabler-icon-file-pay.svg',
-              label: 'Pagar',
+              label: 'Pagar pr\u00e9stamo',
               onTap: () {},
             ),
           ),
@@ -225,15 +390,7 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
           Expanded(
             child: _buildActionButton(
               icon: 'resources/tabler-icon-file-document.svg',
-              label: 'Estado',
-              onTap: () {},
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: _buildActionButton(
-              icon: 'resources/tabler-icon-share-3.svg',
-              label: 'Compartir',
+              label: 'Estado de cuenta',
               onTap: () {},
             ),
           ),
@@ -288,24 +445,22 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
     );
   }
 
-  Widget _buildMovementsSection() {
-    // Filtrar movimientos
-    final filteredMovements = _selectedMovementFilter == null
-        ? _movements
-        : _movements
-            .where((m) => m['type'] == _selectedMovementFilter)
+  Widget _buildCuotasSection() {
+    final filteredCuotas = _selectedCuotaFilter == null
+        ? _cuotas
+        : _cuotas
+            .where((c) => c['status'] == _selectedCuotaFilter)
             .toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Título y filtros
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(
             children: [
               const Text(
-                'Movimientos',
+                'Cuotas',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -318,22 +473,22 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      _buildMovementFilterChip(
+                      _buildCuotaFilterChip(
                         label: 'Todo',
                         value: null,
-                        icon: Icons.swap_vert,
+                        icon: Icons.bar_chart,
                       ),
                       const SizedBox(width: 12),
-                      _buildMovementFilterChip(
-                        label: 'Cr\u00e9dito',
-                        value: 'credito',
-                        icon: Icons.trending_up,
+                      _buildCuotaFilterChip(
+                        label: 'Pagadas',
+                        value: 'pagada',
+                        icon: Icons.check_circle_outline,
                       ),
                       const SizedBox(width: 12),
-                      _buildMovementFilterChip(
-                        label: 'D\u00e9bito',
-                        value: 'debito',
-                        icon: Icons.trending_down,
+                      _buildCuotaFilterChip(
+                        label: 'Pendientes',
+                        value: 'pendiente',
+                        icon: Icons.access_time,
                       ),
                     ],
                   ),
@@ -345,19 +500,18 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
 
         const SizedBox(height: 16),
 
-        // Lista de movimientos
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
-            children: filteredMovements.map((movement) {
-              final isCredit = movement['type'] == 'credito';
+            children: filteredCuotas.map((cuota) {
+              final isPaid = cuota['status'] == 'pagada';
               return Padding(
                 padding: const EdgeInsets.only(bottom: 12),
-                child: _buildMovementItem(
-                  title: movement['title'],
-                  date: movement['date'],
-                  amount: movement['amount'],
-                  isCredit: isCredit,
+                child: _buildCuotaItem(
+                  title: cuota['title'],
+                  date: cuota['date'],
+                  amount: cuota['amount'],
+                  isPaid: isPaid,
                 ),
               );
             }).toList(),
@@ -367,17 +521,17 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
     );
   }
 
-  Widget _buildMovementFilterChip({
+  Widget _buildCuotaFilterChip({
     required String label,
     required String? value,
     required IconData icon,
   }) {
-    final isSelected = _selectedMovementFilter == value;
+    final isSelected = _selectedCuotaFilter == value;
 
     return InkWell(
       onTap: () {
         setState(() {
-          _selectedMovementFilter = value;
+          _selectedCuotaFilter = value;
         });
       },
       borderRadius: BorderRadius.circular(8),
@@ -414,11 +568,11 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
     );
   }
 
-  Widget _buildMovementItem({
+  Widget _buildCuotaItem({
     required String title,
     required String date,
     required String amount,
-    required bool isCredit,
+    required bool isPaid,
   }) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -428,27 +582,25 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
       ),
       child: Row(
         children: [
-          // Icono de movimiento
           Container(
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: isCredit
+              color: isPaid
                   ? AppColors.primary.withOpacity(0.1)
                   : AppColors.secondary.withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Center(
               child: Icon(
-                isCredit ? Icons.trending_up : Icons.trending_down,
+                isPaid ? Icons.check_circle_outline : Icons.access_time,
                 size: 22,
-                color: isCredit ? AppColors.primary : AppColors.secondary,
+                color: isPaid ? AppColors.primary : AppColors.secondary,
               ),
             ),
           ),
           const SizedBox(width: 12),
 
-          // Título y fecha
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -473,13 +625,12 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
             ),
           ),
 
-          // Monto
           Text(
             amount,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w700,
-              color: isCredit ? AppColors.primary : AppColors.secondary,
+              color: isPaid ? AppColors.primary : AppColors.secondary,
             ),
           ),
         ],
@@ -581,4 +732,70 @@ class _AccountDetailPageState extends State<AccountDetailPage> {
       ),
     );
   }
+}
+
+/// Custom painter para el gr\u00e1fico circular del pr\u00e9stamo
+class _LoanProgressPainter extends CustomPainter {
+  final int paid;
+  final int pending;
+  final int total;
+
+  _LoanProgressPainter({
+    required this.paid,
+    required this.pending,
+    required this.total,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = size.width / 2 - 6;
+    const strokeWidth = 6.0;
+    const startAngle = -pi / 2;
+
+    final bgPaint = Paint()
+      ..color = Colors.grey.shade200
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round;
+
+    canvas.drawCircle(center, radius, bgPaint);
+
+    if (total == 0) return;
+
+    // Pagadas (primary/teal)
+    final paidAngle = (paid / total) * 2 * pi;
+    final paidPaint = Paint()
+      ..color = AppColors.primary
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round;
+
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      startAngle,
+      paidAngle,
+      false,
+      paidPaint,
+    );
+
+    // Pendientes (secondary/orange)
+    final pendingAngle = (pending / total) * 2 * pi;
+    final pendingPaint = Paint()
+      ..color = AppColors.secondary
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..strokeCap = StrokeCap.round;
+
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      startAngle + paidAngle,
+      pendingAngle,
+      false,
+      pendingPaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
