@@ -15,6 +15,11 @@ import '../features/notifications/presentation/pages/notifications_page.dart';
 import '../features/payments/presentation/pages/card_payment_page.dart';
 import '../features/payments/presentation/pages/payments_page.dart';
 import '../features/payments/presentation/pages/service_payment_page.dart';
+import '../features/profile/presentation/pages/more_page.dart';
+import '../features/profile/presentation/pages/contact_page.dart';
+import '../features/profile/presentation/pages/beneficiaries_page.dart';
+import '../features/profile/presentation/pages/scheduled_transfers_page.dart';
+import '../features/profile/presentation/pages/settings_page.dart';
 import '../features/scheduled/presentation/pages/scheduled_page.dart';
 import '../features/scheduled/presentation/pages/scheduled_third_party_transfer_page.dart';
 import '../features/transactions/presentation/pages/transaction_history_page.dart';
@@ -382,10 +387,35 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.settings,
         name: 'settings',
-        builder: (context, state) {
-          // TODO: Return SettingsPage()
-          throw UnimplementedError('Settings page not implemented');
-        },
+        builder: (context, state) => const SettingsPage(),
+      ),
+
+      // ======================================================================
+      // OTHER OPTIONS
+      // ======================================================================
+
+      GoRoute(
+        path: RouteConstants.otherOptions,
+        name: 'other-options',
+        builder: (context, state) => const MorePage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.contact,
+        name: 'contact',
+        builder: (context, state) => const ContactPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.beneficiaries,
+        name: 'beneficiaries',
+        builder: (context, state) => const BeneficiariesPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.scheduledTransfers,
+        name: 'scheduled-transfers',
+        builder: (context, state) => const ScheduledTransfersPage(),
       ),
     ],
 

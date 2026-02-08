@@ -163,6 +163,14 @@ class Routes {
   static String privacyPolicy() => RouteConstants.privacyPolicy;
 
   // ============================================================================
+  // OTHER OPTIONS
+  // ============================================================================
+
+  static String otherOptions() => RouteConstants.otherOptions;
+  static String contact() => RouteConstants.contact;
+  static String beneficiaries() => RouteConstants.beneficiaries;
+
+  // ============================================================================
   // ERROR
   // ============================================================================
 

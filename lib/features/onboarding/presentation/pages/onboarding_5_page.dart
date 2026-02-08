@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../routing/routes.dart';
 
 class Onboarding5Page extends StatelessWidget {
   const Onboarding5Page({super.key});
@@ -82,7 +83,7 @@ class Onboarding5Page extends StatelessWidget {
                     height: 56,
                     child: ElevatedButton(
                       onPressed: () {
-                        // TODO: Open camera for selfie capture
+                        context.go(Routes.home());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,

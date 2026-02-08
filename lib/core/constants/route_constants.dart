@@ -160,6 +160,14 @@ class RouteConstants {
   static const String privacyPolicy = '/settings/privacy';
 
   // ============================================================================
+  // OTHER OPTIONS
+  // ============================================================================
+
+  static const String otherOptions = '/other-options';
+  static const String contact = '/contact';
+  static const String beneficiaries = '/beneficiaries';
+
+  // ============================================================================
   // ERROR ROUTES
   // ============================================================================
 

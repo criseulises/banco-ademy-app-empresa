@@ -430,6 +430,8 @@ class _HomePageState extends State<HomePage> {
         });
         if (index == 1) {
           context.push('/transactions');
+        } else if (index == 3) {
+          context.push('/other-options');
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(label)),
