@@ -121,6 +121,7 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/mock_data/
+    - resources/
     - resources/images/
     - resources/icons/
 
