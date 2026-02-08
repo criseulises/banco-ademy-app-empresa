@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/widgets/common_bottom_nav.dart';
 
 class MorePage extends StatefulWidget {
   const MorePage({super.key});
@@ -12,8 +13,6 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> {
-  int _selectedBottomIndex = 3; // "Otras opciones" is selected
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,26 +20,30 @@ class _MorePageState extends State<MorePage> {
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         elevation: 0,
+        toolbarHeight: 80,
         automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Logo on the left
-            Image.asset(
-              'assets/images/logo_ademi_blanco.png',
-              height: 40,
-              fit: BoxFit.contain,
+        flexibleSpace: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: Row(
+              children: [
+                Image.asset(
+                  'resources/logo_ademi_blanco.png',
+                  height: 45,
+                  fit: BoxFit.contain,
+                ),
+                const Spacer(),
+                const Text(
+                  'Otras opciones',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
-            // Title on the right
-            Text(
-              'Otras opciones',
-              style: AppTextStyles.bodyLarge.copyWith(
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
       body: SafeArea(
@@ -87,7 +90,7 @@ class _MorePageState extends State<MorePage> {
           ),
         ),
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: const CommonBottomNav(selectedIndex: 3),
     );
   }
 
@@ -146,100 +149,4 @@ class _MorePageState extends State<MorePage> {
     );
   }
 
-  Widget _buildBottomNavigationBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildBottomNavItem(
-                icon: 'assets/icons/tabler-icon-wallet.svg',
-                label: 'Mis cuentas',
-                index: 0,
-              ),
-              _buildBottomNavItem(
-                icon: 'assets/icons/tabler-icon-arrows-exchange-2.svg',
-                label: 'Transacciones',
-                index: 1,
-              ),
-              _buildBottomNavItem(
-                icon: 'assets/icons/tabler-icon-category-plus.svg',
-                label: 'Solicitudes',
-                index: 2,
-              ),
-              _buildBottomNavItem(
-                icon: 'assets/icons/tabler-icon-stack-2.svg',
-                label: 'Otras opciones',
-                index: 3,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBottomNavItem({
-    required String icon,
-    required String label,
-    required int index,
-  }) {
-    final isSelected = _selectedBottomIndex == index;
-
-    return InkWell(
-      onTap: () {
-        setState(() {
-          _selectedBottomIndex = index;
-        });
-        // TODO: Navigate to corresponding pages
-        if (index == 0) {
-          // Navigate to accounts
-        } else if (index == 1) {
-          context.push('/transactions');
-        } else if (index == 2) {
-          // Navigate to requests
-        }
-        // index 3 is already on this page
-      },
-      borderRadius: BorderRadius.circular(12),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              icon,
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(
-                isSelected ? AppColors.primary : Colors.grey.shade500,
-                BlendMode.srcIn,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 11,
-                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                color: isSelected ? AppColors.primary : Colors.grey.shade600,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
