@@ -7,6 +7,7 @@ import '../features/auth/presentation/pages/reset_password_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
 import '../features/auth/presentation/pages/verify_code_page.dart';
 import '../features/home/presentation/pages/home_page.dart';
+import '../features/notifications/presentation/pages/notifications_page.dart';
 
 /// Application router configuration using go_router
 /// 
@@ -200,10 +201,7 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.notifications,
         name: 'notifications',
-        builder: (context, state) {
-          // TODO: Return NotificationsPage()
-          throw UnimplementedError('Notifications page not implemented');
-        },
+        builder: (context, state) => const NotificationsPage(),
       ),
 
       // ======================================================================
