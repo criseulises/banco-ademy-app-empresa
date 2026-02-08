@@ -49,12 +49,12 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.bottomCenter,
                 child: Image.asset(
                   'resources/logo_ademi.png',
-                  width: 200,
+                  width: 250,
                   fit: BoxFit.contain,
                 ),
               ),
               
-              const SizedBox(height: 32),
+              const SizedBox(height: 22),
               
               // Bienvenido de vuelta
               const Text(
