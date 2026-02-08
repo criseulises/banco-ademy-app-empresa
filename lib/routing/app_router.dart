@@ -6,6 +6,7 @@ import '../features/auth/presentation/pages/login_page.dart';
 import '../features/auth/presentation/pages/reset_password_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
 import '../features/auth/presentation/pages/verify_code_page.dart';
+import '../features/accounts/presentation/pages/account_detail_page.dart';
 import '../features/home/presentation/pages/home_page.dart';
 import '../features/notifications/presentation/pages/notifications_page.dart';
 
@@ -113,6 +114,20 @@ class AppRouter {
         builder: (context, state) {
           // TODO: Return AccountsListPage()
           throw UnimplementedError('Accounts page not implemented');
+        },
+      ),
+
+      GoRoute(
+        path: RouteConstants.accountDetails,
+        name: 'account-details',
+        builder: (context, state) {
+          final extra = state.extra as Map<String, String>? ?? {};
+          return AccountDetailPage(
+            title: extra['title'] ?? '',
+            subtitle: extra['subtitle'] ?? '',
+            accountNumber: extra['accountNumber'] ?? '',
+            balance: extra['balance'] ?? '',
+          );
         },
       ),
 

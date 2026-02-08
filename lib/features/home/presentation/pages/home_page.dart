@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../shared/widgets/ademi_home_app_bar.dart';
@@ -256,8 +257,23 @@ class _HomePageState extends State<HomePage> {
     if (_selectedFilter != null && _selectedFilter != type) {
       return const SizedBox.shrink();
     }
-    
-    return Container(
+
+    return InkWell(
+      onTap: () {
+        if (type == 'cuentas') {
+          context.push(
+            '/accounts/$accountNumber',
+            extra: {
+              'title': title,
+              'subtitle': subtitle,
+              'accountNumber': accountNumber,
+              'balance': balance,
+            },
+          );
+        }
+      },
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -324,6 +340,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ],
+      ),
       ),
     );
   }
