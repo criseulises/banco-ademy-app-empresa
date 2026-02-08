@@ -12,6 +12,17 @@ import '../features/cards/presentation/pages/card_detail_page.dart';
 import '../features/home/presentation/pages/home_page.dart';
 import '../features/loans/presentation/pages/loan_detail_page.dart';
 import '../features/notifications/presentation/pages/notifications_page.dart';
+import '../features/payments/presentation/pages/card_payment_page.dart';
+import '../features/payments/presentation/pages/payments_page.dart';
+import '../features/payments/presentation/pages/service_payment_page.dart';
+import '../features/scheduled/presentation/pages/scheduled_page.dart';
+import '../features/scheduled/presentation/pages/scheduled_third_party_transfer_page.dart';
+import '../features/transactions/presentation/pages/transaction_history_page.dart';
+import '../features/transactions/presentation/pages/transactions_page.dart';
+import '../features/transfers/presentation/pages/own_transfer_page.dart';
+import '../features/transfers/presentation/pages/third_party_transfer_page.dart';
+import '../features/transfers/presentation/pages/transfer_receipt_page.dart';
+import '../features/transfers/presentation/pages/transfers_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_1_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_2_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_3_page.dart';
@@ -142,6 +153,18 @@ class AppRouter {
         builder: (context, state) => const HomePage(),
       ),
 
+      GoRoute(
+        path: RouteConstants.transactions,
+        name: 'transactions',
+        builder: (context, state) => const TransactionsPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.transactionHistory,
+        name: 'transaction-history',
+        builder: (context, state) => const TransactionHistoryPage(),
+      ),
+
       // ======================================================================
       // ACCOUNTS ROUTES
       // ======================================================================
@@ -205,9 +228,32 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.transfers,
         name: 'transfers',
+        builder: (context, state) => const TransfersPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.ownTransfer,
+        name: 'own-transfer',
+        builder: (context, state) => const OwnTransferPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.thirdPartyTransfer,
+        name: 'third-party-transfer',
+        builder: (context, state) => const ThirdPartyTransferPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.transferReceipt,
+        name: 'transfer-receipt',
         builder: (context, state) {
-          // TODO: Return TransfersPage()
-          throw UnimplementedError('Transfers page not implemented');
+          final extra = state.extra as Map<String, dynamic>? ?? {};
+          return TransferReceiptPage(
+            origen: extra['origen'] as String? ?? '',
+            destino: extra['destino'] as String? ?? '',
+            concepto: extra['concepto'] as String? ?? '',
+            monto: extra['monto'] as double? ?? 0.0,
+          );
         },
       ),
 
@@ -218,10 +264,35 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.payments,
         name: 'payments',
-        builder: (context, state) {
-          // TODO: Return PaymentsPage()
-          throw UnimplementedError('Payments page not implemented');
-        },
+        builder: (context, state) => const PaymentsPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.cardPayment,
+        name: 'card-payment',
+        builder: (context, state) => const CardPaymentPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.servicePayment,
+        name: 'service-payment',
+        builder: (context, state) => const ServicePaymentPage(),
+      ),
+
+      // ======================================================================
+      // SCHEDULED ROUTES
+      // ======================================================================
+
+      GoRoute(
+        path: RouteConstants.scheduled,
+        name: 'scheduled',
+        builder: (context, state) => const ScheduledPage(),
+      ),
+
+      GoRoute(
+        path: RouteConstants.scheduledThirdPartyTransfer,
+        name: 'scheduled-third-party-transfer',
+        builder: (context, state) => const ScheduledThirdPartyTransferPage(),
       ),
 
       // ======================================================================

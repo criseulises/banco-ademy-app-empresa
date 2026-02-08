@@ -40,6 +40,8 @@ class RouteConstants {
 
   static const String home = '/home';
   static const String dashboard = '/dashboard';
+  static const String transactions = '/transactions';
+  static const String transactionHistory = '/transactions/history';
 
   // ============================================================================
   // ACCOUNTS ROUTES
@@ -68,6 +70,7 @@ class RouteConstants {
 
   static const String transfers = '/transfers';
   static const String ownTransfer = '/transfers/own';
+  static const String thirdPartyTransfer = '/transfers/third-party';
   static const String internalTransfer = '/transfers/internal';
   static const String achTransfer = '/transfers/ach';
   static const String lbtrTransfer = '/transfers/lbtr';
@@ -82,6 +85,8 @@ class RouteConstants {
   // ============================================================================
 
   static const String payments = '/payments';
+  static const String cardPayment = '/payments/card';
+  static const String servicePayment = '/payments/service';
   static const String paymentServices = '/payments/services';
   static const String payBill = '/payments/bill';
   static const String mobileTopUp = '/payments/mobile-topup';
@@ -89,6 +94,13 @@ class RouteConstants {
   static const String scheduledPayments = '/payments/scheduled';
   static const String paymentConfirmation = '/payments/confirmation';
   static const String paymentReceipt = '/payments/receipt';
+
+  // ============================================================================
+  // SCHEDULED ROUTES
+  // ============================================================================
+
+  static const String scheduled = '/scheduled';
+  static const String scheduledThirdPartyTransfer = '/scheduled/third-party-transfer';
 
   // ============================================================================
   // LOANS ROUTES
