@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../core/constants/route_constants.dart';
@@ -6,6 +7,11 @@ import '../features/auth/presentation/pages/login_page.dart';
 import '../features/auth/presentation/pages/reset_password_page.dart';
 import '../features/auth/presentation/pages/splash_page.dart';
 import '../features/auth/presentation/pages/verify_code_page.dart';
+import '../features/accounts/presentation/pages/account_detail_page.dart';
+import '../features/cards/presentation/pages/card_detail_page.dart';
+import '../features/home/presentation/pages/home_page.dart';
+import '../features/loans/presentation/pages/loan_detail_page.dart';
+import '../features/notifications/presentation/pages/notifications_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_1_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_2_page.dart';
 import '../features/onboarding/presentation/pages/onboarding_3_page.dart';
@@ -133,10 +139,7 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.home,
         name: 'home',
-        builder: (context, state) {
-          // TODO: Return HomePage()
-          throw UnimplementedError('Home page not implemented');
-        },
+        builder: (context, state) => const HomePage(),
       ),
 
       // ======================================================================
@@ -152,6 +155,20 @@ class AppRouter {
         },
       ),
 
+      GoRoute(
+        path: RouteConstants.accountDetails,
+        name: 'account-details',
+        builder: (context, state) {
+          final extra = state.extra as Map<String, String>? ?? {};
+          return AccountDetailPage(
+            title: extra['title'] ?? '',
+            subtitle: extra['subtitle'] ?? '',
+            accountNumber: extra['accountNumber'] ?? '',
+            balance: extra['balance'] ?? '',
+          );
+        },
+      ),
+
       // ======================================================================
       // CARDS ROUTES
       // ======================================================================
@@ -162,6 +179,22 @@ class AppRouter {
         builder: (context, state) {
           // TODO: Return CardsListPage()
           throw UnimplementedError('Cards page not implemented');
+        },
+      ),
+
+      GoRoute(
+        path: RouteConstants.cardDetails,
+        name: 'card-details',
+        builder: (context, state) {
+          final extra = state.extra as Map<String, String>? ?? {};
+          return CardDetailPage(
+            cardName: extra['cardName'] ?? '',
+            cardNumber: extra['cardNumber'] ?? '',
+            cardHolder: extra['cardHolder'] ?? '',
+            available: extra['available'] ?? '',
+            balance: extra['balance'] ?? '',
+            brand: extra['brand'] ?? '',
+          );
         },
       ),
 
@@ -204,6 +237,24 @@ class AppRouter {
         },
       ),
 
+      GoRoute(
+        path: RouteConstants.loanDetails,
+        name: 'loan-details',
+        builder: (context, state) {
+          final extra = state.extra as Map<String, dynamic>? ?? {};
+          return LoanDetailPage(
+            title: extra['title'] as String? ?? '',
+            subtitle: extra['subtitle'] as String? ?? '',
+            loanNumber: extra['loanNumber'] as String? ?? '',
+            remainingAmount: extra['remainingAmount'] as String? ?? '',
+            originalAmount: extra['originalAmount'] as String? ?? '',
+            rate: extra['rate'] as String? ?? '',
+            totalInstallments: extra['totalInstallments'] as int? ?? 0,
+            paidInstallments: extra['paidInstallments'] as int? ?? 0,
+          );
+        },
+      ),
+
       // ======================================================================
       // INVESTMENTS ROUTES
       // ======================================================================
@@ -237,10 +288,7 @@ class AppRouter {
       GoRoute(
         path: RouteConstants.notifications,
         name: 'notifications',
-        builder: (context, state) {
-          // TODO: Return NotificationsPage()
-          throw UnimplementedError('Notifications page not implemented');
-        },
+        builder: (context, state) => const NotificationsPage(),
       ),
 
       // ======================================================================
@@ -272,8 +320,34 @@ class AppRouter {
 
     // Error handling
     errorBuilder: (context, state) {
-      // TODO: Return ErrorPage(error: state.error)
-      throw UnimplementedError('Error page not implemented');
+      return Scaffold(
+        backgroundColor: const Color(0xFFF5F6FB),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF0095A9),
+          title: const Text(
+            'P\u00e1gina no encontrada',
+            style: TextStyle(color: Colors.white),
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () => context.go('/home'),
+          ),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.error_outline, size: 64, color: Color(0xFF0095A9)),
+              const SizedBox(height: 16),
+              Text(
+                'La ruta "${state.uri}" no existe',
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      );
     },
 
     // TODO: Add redirect logic for authentication
