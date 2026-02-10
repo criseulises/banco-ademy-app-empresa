@@ -19,14 +19,26 @@ class PaymentsPage extends StatelessWidget {
         child: Column(
           children: [
             _buildOptionCard(
+              icon: 'resources/tabler-icon-receipt-tax.svg',
+              label: 'Pago de Impuestos y TSS',
+              onTap: () => context.push('/payments/taxes'),
+            ),
+            const SizedBox(height: 16),
+            _buildOptionCard(
               icon: 'resources/tabler-icon-credit-card.svg',
-              label: 'Pagar tarjeta',
+              label: 'Tarjetas de Crédito',
               onTap: () => context.push('/payments/card'),
             ),
             const SizedBox(height: 16),
             _buildOptionCard(
+              icon: 'resources/tabler-icon-bulb.svg',
+              label: 'Servicios y Facturas',
+              onTap: () => context.push('/payments/service'),
+            ),
+            const SizedBox(height: 16),
+            _buildOptionCard(
               icon: 'resources/loans.svg',
-              label: 'Pagar préstamo',
+              label: 'Pagar Préstamo',
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Pagar préstamo...')),
@@ -35,29 +47,16 @@ class PaymentsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             _buildOptionCard(
-              icon: 'resources/tabler-icon-bulb.svg',
-              label: 'Pagar servicio',
-              onTap: () => context.push('/payments/service'),
+              icon: 'resources/tabler-icon-users.svg',
+              label: 'Empleados',
+              onTap: () => context.push('/payments/employees'),
             ),
+            
             const SizedBox(height: 16),
             _buildOptionCard(
-              icon: 'resources/tabler-icon-receipt-tax.svg',
-              label: 'Pagar impuesto',
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Pagar impuesto...')),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            _buildOptionCard(
-              icon: 'resources/tabler-icon-phone.svg',
-              label: 'Recargar celular',
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Recargar celular...')),
-                );
-              },
+              icon: 'resources/tabler-icon-building-factory-2.svg',
+              label: 'Suplidores',
+              onTap: () => context.push('/payments/suppliers'),
             ),
           ],
         ),

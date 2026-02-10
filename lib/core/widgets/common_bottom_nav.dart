@@ -35,37 +35,45 @@ class CommonBottomNav extends StatelessWidget {
       ),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(
-                context: context,
-                icon: 'resources/tabler-icon-wallet.svg',
-                label: 'Mis productos',
-                index: 0,
-                route: '/home',
+              Expanded(
+                child: _buildNavItem(
+                  context: context,
+                  icon: 'resources/tabler-icon-wallet.svg',
+                  label: 'Mis productos',
+                  index: 0,
+                  route: '/home',
+                ),
               ),
-              _buildNavItem(
-                context: context,
-                icon: 'resources/tabler-icon-arrows-exchange-2.svg',
-                label: 'Transacciones',
-                index: 1,
-                route: '/transactions',
+              Expanded(
+                child: _buildNavItem(
+                  context: context,
+                  icon: 'resources/tabler-icon-arrows-exchange-2.svg',
+                  label: 'Transacciones',
+                  index: 1,
+                  route: '/transactions',
+                ),
               ),
-              _buildNavItem(
-                context: context,
-                icon: 'resources/tabler-icon-category-plus.svg',
-                label: 'Solicitudes',
-                index: 2,
-                route: '/requests',
+              Expanded(
+                child: _buildNavItem(
+                  context: context,
+                  icon: 'resources/tabler-icon-category-plus.svg',
+                  label: 'Solicitudes',
+                  index: 2,
+                  route: '/requests',
+                ),
               ),
-              _buildNavItem(
-                context: context,
-                icon: 'resources/tabler-icon-stack-2.svg',
-                label: 'Otras opciones',
-                index: 3,
-                route: '/other-options',
+              Expanded(
+                child: _buildNavItem(
+                  context: context,
+                  icon: 'resources/tabler-icon-stack-2.svg',
+                  label: 'Otras opciones',
+                  index: 3,
+                  route: '/other-options',
+                ),
               ),
             ],
           ),
@@ -94,7 +102,7 @@ class CommonBottomNav extends StatelessWidget {
       },
       borderRadius: BorderRadius.circular(12),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -110,6 +118,9 @@ class CommonBottomNav extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               label,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,

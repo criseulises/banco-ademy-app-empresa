@@ -80,6 +80,13 @@ class _MorePageState extends State<MorePage> {
                 },
               ),
               _buildOptionItem(
+                icon: 'assets/icons/tabler-icon-rubber-stamp.svg',
+                title: 'Authorizaciones Pendientes',
+                onTap: () {
+                  context.go('/pending-authorizations');
+                },
+              ),
+              _buildOptionItem(
                 icon: 'assets/icons/tabler-icon-settings.svg',
                 title: 'Configuraciones',
                 onTap: () {

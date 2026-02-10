@@ -33,6 +33,18 @@ class Onboarding1Page extends StatelessWidget {
                     ),
                   ),
 
+                  const SizedBox(height: 5),
+
+                  Text(
+                    '¡App Empresa!',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.headlineMedium.copyWith(
+                      color: AppColors.textPrimary,
+                      height: 1.4,
+                      fontSize: 25,
+                    ),
+                  ),
+
                   const SizedBox(height: 10),
 
                   // Welcome Text

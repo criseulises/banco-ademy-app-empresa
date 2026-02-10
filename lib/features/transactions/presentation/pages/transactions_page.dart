@@ -37,6 +37,18 @@ class _TransactionsPageState extends State<TransactionsPage> {
             ),
             const SizedBox(height: 16),
             _buildOptionCard(
+              icon: 'resources/tabler-icon-transaction-dollar.svg',
+              label: 'Cambio de Divisas',
+              onTap: () => context.push('/currency-exchange'),
+            ),
+            const SizedBox(height: 16),
+            _buildOptionCard(
+              icon: 'resources/tabler-icon-moneybag.svg',
+              label: 'Desembolsos',
+              onTap: () => context.push('/disbursements'),
+            ),
+            const SizedBox(height: 16),
+            _buildOptionCard(
               icon: 'resources/tabler-icon-calendar-time.svg',
               label: 'Agendar',
               onTap: () => context.push('/scheduled'),

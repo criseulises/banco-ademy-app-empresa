@@ -35,6 +35,18 @@ class _TransfersPageState extends State<TransfersPage> {
               label: 'Transferir a terceros',
               onTap: () => context.push('/transfers/third-party'),
             ),
+            const SizedBox(height: 24),
+            _buildOptionCard(
+              icon: 'resources/tabler-icon-building-bank.svg',
+              label: 'Interbancarias',
+              onTap: () => context.push('/transfers/interbank'),
+            ),
+                        const SizedBox(height: 24),
+            _buildOptionCard(
+              icon: 'resources/tabler-icon-plane-departure.svg',
+              label: 'Internacionales',
+              onTap: () => context.push('/transfers/international'),
+            ),
           ],
         ),
       ),
