@@ -13,6 +13,7 @@ import '../features/home/presentation/pages/home_page.dart';
 import '../features/loans/presentation/pages/loan_detail_page.dart';
 import '../features/notifications/presentation/pages/notifications_page.dart';
 import '../features/payments/presentation/pages/card_payment_page.dart';
+import '../features/payments/presentation/pages/employee_payment_page.dart';
 import '../features/payments/presentation/pages/payments_page.dart';
 import '../features/payments/presentation/pages/service_payment_page.dart';
 import '../features/profile/presentation/pages/more_page.dart';
@@ -317,6 +318,16 @@ class AppRouter {
         pageBuilder: (context, state) => CustomTransitionPage(
           key: state.pageKey,
           child: const ServicePaymentPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
+        ),
+      ),
+
+      GoRoute(
+        path: RouteConstants.employeePayment,
+        name: 'employee-payment',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const EmployeePaymentPage(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) => child,
         ),
       ),
