@@ -92,6 +92,7 @@ class Routes {
   // ============================================================================
 
   static String payments() => RouteConstants.payments;
+  static String employeePayment() => RouteConstants.employeePayment;
   static String paymentServices() => RouteConstants.paymentServices;
   static String payBill() => RouteConstants.payBill;
   static String mobileTopUp() => RouteConstants.mobileTopUp;

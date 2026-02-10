@@ -87,6 +87,7 @@ class RouteConstants {
   static const String payments = '/payments';
   static const String cardPayment = '/payments/card';
   static const String servicePayment = '/payments/service';
+  static const String employeePayment = '/payments/employees';
   static const String paymentServices = '/payments/services';
   static const String payBill = '/payments/bill';
   static const String mobileTopUp = '/payments/mobile-topup';
