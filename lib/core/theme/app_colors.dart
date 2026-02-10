@@ -11,7 +11,7 @@ class AppColors {
   // ============================================================================
 
   /// Primary brand color - Turquesa ADEMI
-  static const Color primary = Color(0xFF0095A9);
+  static const Color primary = Color(0xFF007A8A);
   static const Color primaryLight = Color(0xFF00B8D4);
   static const Color primaryDark = Color(0xFF007A8A);
   static const Color primaryVariant = Color(0xFF008296);
@@ -21,7 +21,7 @@ class AppColors {
   // ============================================================================
 
   /// Secondary/accent color - Naranja ADEMI
-  static const Color secondary = Color(0xFFFA6C26);
+  static const Color secondary = Color(0xFFD85A1F);
   static const Color secondaryLight = Color(0xFFFC8548);
   static const Color secondaryDark = Color(0xFFE85A15);
 
