@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_dimensions.dart';
@@ -26,9 +27,13 @@ class Onboarding1Page extends StatelessWidget {
                   Center(
                     child: SizedBox(
                       height: 104,
-                      child: Image.asset(
-                        'assets/images/logo_ademi.png',
+                      child: SvgPicture.asset(
+                        'resources/logo_ademi.svg',
                         fit: BoxFit.contain,
+                        colorFilter: const ColorFilter.mode(
+                          AppColors.primary,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                   ),
